@@ -2,19 +2,16 @@
 import React from 'react';
 import { View, ActivityIndicator } from 'react-native';
 
-import firebase from 'firebase';
-
-import styles from './Styles';
+import API from '../utils/Firebase';
+import styles from '../Styles';
 
 const LoadingScreen = ({ navigation }) => {
   const isUserLoggedIn = React.useCallback(() => {
-    firebase
-      .auth()
-      .onAuthStateChanged(user =>
-        user
-          ? navigation.navigate('DashboardScreen')
-          : navigation.navigate('LoginScreen')
-      );
+    API.auth().onAuthStateChanged(user =>
+      user
+        ? navigation.navigate('DashboardScreen')
+        : navigation.navigate('LoginScreen')
+    );
   }, [navigation]);
 
   React.useEffect(() => {
