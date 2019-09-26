@@ -1,13 +1,13 @@
 import API from './Firebase';
 
-import isUserEqual from './IsUserEqual';
+import isUserEqualGoogle from './IsUserEqualGoogle';
 
-const onSignIn = googleUser => {
+const onSignInGoogle = googleUser => {
   // We need to register an Observer on Firebase Auth to make sure auth is initialized.
   const unsubscribe = API.auth().onAuthStateChanged(function(firebaseUser) {
     unsubscribe();
     // Check if we are already signed-in Firebase with the correct user.
-    if (!isUserEqual(googleUser, firebaseUser)) {
+    if (!isUserEqualGoogle(googleUser, firebaseUser)) {
       // Build Firebase credential with the Google ID token.
       const credential = API.auth.GoogleAuthProvider.credential(
         googleUser.idToken,
@@ -43,4 +43,4 @@ const onSignIn = googleUser => {
   });
 };
 
-export default onSignIn;
+export default onSignInGoogle;

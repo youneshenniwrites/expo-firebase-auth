@@ -1,6 +1,6 @@
 import API from './Firebase';
 
-const isUserEqual = (googleUser, firebaseUser) => {
+const isUserEqualGoogle = (googleUser, firebaseUser) => {
   if (firebaseUser) {
     const { providerData } = firebaseUser;
     for (let i = 0; i < providerData.length; i++) {
@@ -16,4 +16,4 @@ const isUserEqual = (googleUser, firebaseUser) => {
   return false;
 };
 
-export default isUserEqual;
+export default isUserEqualGoogle;

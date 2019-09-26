@@ -1,6 +1,6 @@
 import * as Google from 'expo-google-app-auth';
 
-import onSignIn from './GoogleSigInFirebase';
+import onSignInGoogle from './GoogleSigInFirebase';
 import { iOSClientID } from './keys';
 
 const signInWithGoogleAsync = async () => {
@@ -11,7 +11,7 @@ const signInWithGoogleAsync = async () => {
       scopes: ['profile', 'email'],
     });
     if (result.type === 'success') {
-      onSignIn(result);
+      onSignInGoogle(result);
       return result.accessToken;
     }
     return { cancelled: true };
