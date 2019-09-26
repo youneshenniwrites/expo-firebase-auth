@@ -4,7 +4,7 @@ import isUserEqualGoogle from './IsUserEqualGoogle';
 
 const onSignInGoogle = googleUser => {
   // We need to register an Observer on Firebase Auth to make sure auth is initialized.
-  const unsubscribe = API.auth().onAuthStateChanged(function(firebaseUser) {
+  const unsubscribe = API.auth().onAuthStateChanged(firebaseUser => {
     unsubscribe();
     // Check if we are already signed-in Firebase with the correct user.
     if (!isUserEqualGoogle(googleUser, firebaseUser)) {
